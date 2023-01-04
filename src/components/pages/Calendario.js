@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Loading from '../layout/Loading';
 import ScheduleCard from '../layout/ScheduleCard';
-import key from '../../env.json';
+// import key from '../../env.json';
 
 import styles from './Calendario.module.css';
 
