@@ -1,0 +1,15 @@
+.btn {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgb(88, 143, 83);
+    padding: .5em;
+    background-color: rgb(88, 143, 83);
+ 
+}
+
+.btn:hover {
+    transition: .5s;
+    border: 1px solid rgb(141, 221, 161);
+    background-color: rgb(141, 221, 161);
+    color: #fff;
+}

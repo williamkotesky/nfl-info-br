@@ -1,0 +1,24 @@
+.infoSection {
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.infoContainer span {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.infoField {
+    font-weight: bold;
+    margin-right: .2rem;
+    
+}
+
+.LoaderPlace {
+    margin-top: 5rem;
+    height: 100vh;
+}

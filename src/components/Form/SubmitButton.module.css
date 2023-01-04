@@ -1,0 +1,13 @@
+.btn {
+    background-color: rgb(88, 143, 83);
+    color: #fff;
+    padding: .5em;
+    border: 0;
+    height: 39px;
+}
+
+.btn:hover {
+    transition: .5s;
+    background-color: rgb(141, 221, 161);
+    cursor: pointer;
+}
