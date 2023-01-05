@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Loading from '../layout/Loading';
 import ScheduleCard from '../layout/ScheduleCard';
-// import key from '../../env.json';
+import key from '../../env.json';
 
 import styles from './Calendario.module.css';
 
@@ -27,8 +27,7 @@ function Calendario() {
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key':"330fe0edcemsh07698216d018bc1p19890cjsnb65df9dfdda6",
-                // 'X-RapidAPI-Key': key.keys[0].calendarApi,
+                'X-RapidAPI-Key': key.keys[0].calendarApi,
                 'X-RapidAPI-Host': 'nfl-schedule.p.rapidapi.com'
             }
         };
