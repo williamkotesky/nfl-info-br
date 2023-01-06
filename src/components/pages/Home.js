@@ -20,7 +20,7 @@ function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch(`http://localhost:5000/news`, {
+      fetch(`https://nfl-info-br-db.netlify.app/db.json/teams`, {
       method: "GET",
       headers: {
           'Content-Type': 'application/json'
