@@ -26,3 +26,4 @@ yarn-error.log*
 
 #particular keys
 /src/env.json
+.env
