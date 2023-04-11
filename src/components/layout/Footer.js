@@ -1,27 +1,29 @@
-import { useState, useEffect } from 'react';
-import styles from './Footer.module.css';
+import { useState, useEffect } from "react";
+import styles from "./Footer.module.css";
 
 function Footer() {
-    const [dataYear, setDataYear] = useState();
-    
-    function year() {
-        const data = new Date();
-        setDataYear(data.getFullYear())
-    }
+  const [dataYear, setDataYear] = useState();
 
-    useEffect(() => {
-        year()
-    }, []);
+  function year() {
+    const data = new Date();
+    setDataYear(data.getFullYear());
+  }
 
-    return(
-        <footer className={styles.footerContainer} >
-            <div className={styles.infoFooter}>
-                <p>Site feito com React.js</p>
-                <p>Marcas e nomes dos times são propriedades da NFL</p>
-                <p className={styles.year}>{dataYear}</p>
-            </div>
-        </footer>
-    )
+  useEffect(() => {
+    year();
+  }, []);
+
+  return (
+    <footer className={styles.footerContainer}>
+      <div className={styles.infoFooter}>
+        <p>
+          Site feito com React.js. O site utiliza cookies para executar o CRUD.
+        </p>
+        <p>Marcas e nomes dos times são propriedades da NFL.</p>
+        <p className={styles.year}>{dataYear}</p>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;
