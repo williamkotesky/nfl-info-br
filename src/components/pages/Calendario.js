@@ -43,6 +43,7 @@ function Calendario() {
   ]);
   const [myTeams, setMyTeams] = useState([]);
   const [myTeamsFav, setMyTeamsFav] = useState([]);
+  const [offSeason, setoffSeason] = useState();
 
   useEffect(() => {
     const calendarApiUrl = process.env.REACT_APP_calendarApi;
@@ -67,7 +68,7 @@ function Calendario() {
           }
           setSchedule(dataArray);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => setoffSeason(true));
     }, 2000);
 
     function factorySchedule(object, i) {
@@ -135,7 +136,12 @@ function Calendario() {
 
   return (
     <>
-      {schedule[0] ? (
+      {offSeason ? (
+        <section className={styles.calendarioContainerOff}>
+          <h2>Perídodo de offSeason</h2>
+          <h3>Calendário: Setembro/2023</h3>
+        </section>
+      ) : schedule[0] ? (
         <section className={styles.calendarioContainer}>
           <h1>Calendário da Semana</h1>
           {bye.length > 0 && (
