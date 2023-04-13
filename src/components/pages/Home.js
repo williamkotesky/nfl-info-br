@@ -4,6 +4,7 @@ import NewsCard from "../layout/NewsCard";
 import styles from "./Home.module.css";
 import ButtonLink from "../layout/ButtonLink";
 import BigNewsCard from "../layout/BigNewsCard";
+import Content from "../data/Content";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -16,20 +17,8 @@ function Home() {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(`http://localhost:5000/teams`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          setNews(data);
-          setShowLoading(true);
-        })
-        .catch((err) => console.log(err));
-    }, 1000);
+    setNews(Content.news);
+    setShowLoading(true);
   }, []);
 
   return (

@@ -63,7 +63,6 @@ function Stats() {
 
       getData().then((data) => {
         setStats(data);
-        console.log(data);
       });
     }, 1000);
   }, [teams]);
