@@ -14,7 +14,9 @@ function Time() {
   const { id } = useParams();
   const [team, setTeam] = useState({});
   const [showTeamsForm, setShowTeamsForm] = useState(false);
+  // eslint-disable-next-line
   const [message, setMessage] = useState();
+  // eslint-disable-next-line
   const [type, setType] = useState();
   const [teamId, setTeamId] = useState();
   const [showTeamErrorEdit, setShowTeamErrorEdit] = useState(false);

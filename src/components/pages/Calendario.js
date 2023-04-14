@@ -41,7 +41,8 @@ function Calendario() {
     "Ravens",
     "Texans",
   ]);
-  const [myTeams, setMyTeams] = useState([]);
+  //const [myTeams, setMyTeams] = useState([]);
+  // eslint-disable-next-line
   const [myTeamsFav, setMyTeamsFav] = useState([]);
   const [offSeason, setoffSeason] = useState();
 

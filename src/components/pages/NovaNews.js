@@ -19,15 +19,15 @@ function NovaNews() {
       localStorage.getItem("localStorageNews")
     );
 
-    function newsId() {
-      if (
-        localStorageRecover &&
-        Object.keys(localStorageRecover).length === 0
-      ) {
-        return 5;
-      }
-      return 5 + Object.keys(localStorageRecover.news).length; //ALTERAR?????????????
-    }
+    // function newsId() {
+    //   if (
+    //     localStorageRecover &&
+    //     Object.keys(localStorageRecover).length === 0
+    //   ) {
+    //     return 5;
+    //   }
+    //   return 5 + Object.keys(localStorageRecover.news).length; //ALTERAR?????????????
+    // }
 
     const newsIdValue = uuidv4();
     const idNumber = parseInt(newsIdValue.replace(/-/g, ""), 16);

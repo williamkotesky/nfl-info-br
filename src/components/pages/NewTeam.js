@@ -65,15 +65,15 @@ function NewTeam() {
       localStorage.getItem("localStorageTeams")
     );
 
-    function teamsId() {
-      if (
-        localStorageRecover &&
-        Object.keys(localStorageRecover).length === 0
-      ) {
-        return 6;
-      }
-      return 6 + Object.keys(localStorageRecover.teams).length; //ALTERAR?????????????
-    }
+    // function teamsId() {
+    //   if (
+    //     localStorageRecover &&
+    //     Object.keys(localStorageRecover).length === 0
+    //   ) {
+    //     return 6;
+    //   }
+    //   return 6 + Object.keys(localStorageRecover.teams).length; //ALTERAR?????????????
+    // }
 
     const teamsIdValue = uuidv4();
     const idNumber = parseInt(teamsIdValue.replace(/-/g, ""), 16);
