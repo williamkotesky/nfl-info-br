@@ -1,23 +1,31 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Loading from "../layout/Loading";
 import ButtonLink from "../layout/ButtonLink";
 import NewsForm from "../news/NewsForm";
 import Content from "../data/Content";
-//import { useNavigate } from "react-router-dom";
 import styles from "./News.module.css";
 
 function News() {
   const { id } = useParams();
-  //const history = useNavigate();
-
   const [news, setNews] = useState([]);
   const [showNewsForm, setShowNewsForm] = useState(false);
   const [showNewsErrorEdit, setShowNewsErrorEdit] = useState(false);
   const [showNewsErrorDelete, setShowNewsErrorDelete] = useState(false);
+  const history = useNavigate();
 
   useEffect(() => {
-    const clickedNews = Content.news.find((item) => item.id === Number(id));
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem("localStorageNews")
+    );
+    let clickedNews;
+    if (localStorageRecover !== null) {
+      const teamConcat = Content.news.concat(localStorageRecover.news);
+      clickedNews = teamConcat.find((item) => item.id === Number(id));
+      setNews(clickedNews);
+      return;
+    }
+    clickedNews = Content.news.find((item) => item.id === Number(id));
     setNews(clickedNews);
   }, [id]);
 
@@ -25,11 +33,32 @@ function News() {
     setShowNewsForm(!showNewsForm);
   }
 
-  function editPost(news) {
-    if (news.id <= 4) {
+  function editPost(newsUpdated) {
+    if (newsUpdated.id <= 4 && newsUpdated.id % 1 === 0) {
       setShowNewsErrorEdit(true);
       return;
     }
+
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem(`localStorageNews`)
+    );
+
+    const newsArray = localStorageRecover.news;
+    let upDatedData = newsArray.map((item) => {
+      if (item.id === news.id) {
+        return newsUpdated;
+      }
+      return item;
+    });
+
+    localStorageRecover.news = upDatedData;
+    localStorage.setItem(
+      "localStorageNews",
+      JSON.stringify(localStorageRecover)
+    );
+    back();
+    window.location.reload();
+    window.scrollTo(0, 0);
     // fetch(`http://localhost:5000/news/${news.id}`, {
     //   method: "PATCH",
     //   headers: {
@@ -49,22 +78,38 @@ function News() {
     setShowNewsForm(!showNewsForm);
   }
 
-  function deletePost() {
-    if (news.id <= 4) {
+  function deletePost(id) {
+    if (news.id <= 4 && news.id % 1 === 0) {
       setShowNewsErrorDelete(true);
       return;
-      //     fetch(`http://localhost:5000/news/${id}`, {
-      //       method: "DELETE",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     })
-      //       .then((resp) => resp.json())
-      //       .then(() => {
-      //         history("/");
-      //       })
-      //       .catch((err) => console.log(err));
     }
+
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem("localStorageNews")
+    );
+    const newsArray = localStorageRecover.news;
+
+    const newNewsArray = newsArray.filter((item) => item.id !== Number(id));
+    //map((item) => console.log(item.id, id));
+    console.log(newNewsArray);
+    localStorageRecover.news = newNewsArray;
+    localStorage.setItem(
+      "localStorageNews",
+      JSON.stringify(localStorageRecover)
+    );
+    history("/");
+
+    //     fetch(`http://localhost:5000/news/${id}`, {
+    //       method: "DELETE",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     })
+    //       .then((resp) => resp.json())
+    //       .then(() => {
+    //         history("/");
+    //       })
+    //       .catch((err) => console.log(err));
   }
 
   return (
@@ -92,7 +137,10 @@ function News() {
                 >
                   Editar
                 </button>
-                <button onClick={deletePost} className={styles.buttonAction}>
+                <button
+                  onClick={() => deletePost(id)}
+                  className={styles.buttonAction}
+                >
                   Deletar
                 </button>
                 <ButtonLink to="/" text="Voltar" />

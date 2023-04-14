@@ -19,6 +19,15 @@ function Times() {
   //   const location = useLocation();
 
   useEffect(() => {
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem("localStorageTeams")
+    );
+    if (localStorageRecover !== null) {
+      setTeams(Content.teams.concat(localStorageRecover.teams));
+      setRemoveLoading(true);
+      return;
+    }
+
     setTeams(Content.teams);
     setRemoveLoading(true);
 
@@ -43,10 +52,24 @@ function Times() {
   }, []);
 
   function removeTeam(id) {
-    if (id <= 5) {
+    if (id <= 5 && id % 1 === 0) {
       setShowTeamErrorDelete(true);
       return;
     }
+
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem("localStorageTeams")
+    );
+    const teamsArray = localStorageRecover.teams;
+    const newTeamsArray = teamsArray.filter((item) => item.id !== id);
+    localStorageRecover.teams = newTeamsArray;
+    localStorage.setItem(
+      "localStorageTeams",
+      JSON.stringify(localStorageRecover)
+    );
+    window.location.reload();
+    window.scrollTo(0, 0);
+
     // fetch(`http://localhost:5000/teams/${id}`, {
     //   method: "DELETE",
     //   headers: {

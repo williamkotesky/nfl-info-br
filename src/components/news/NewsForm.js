@@ -3,6 +3,7 @@ import { useState } from "react";
 import Input from "../Form/Input";
 import TextArea from "../Form/TextArea";
 import SubmitButton from "../Form/SubmitButton";
+import ButtonLink from "../layout/ButtonLink";
 
 function NewsForm({ handleSubmit, btnText, newsData, newsError }) {
   const [news, setNews] = useState(newsData || {});
@@ -21,10 +22,10 @@ function NewsForm({ handleSubmit, btnText, newsData, newsError }) {
     }
   }
 
-  const submit = (e) => {
+  function submit(e) {
     e.preventDefault();
     handleSubmit(news);
-  };
+  }
 
   function createDate() {
     const date = new Date();
@@ -83,7 +84,10 @@ function NewsForm({ handleSubmit, btnText, newsData, newsError }) {
           handleOnChange={handleChange}
           value={news.newsBody ? news.newsBody : ""}
         />
-        <SubmitButton text={btnText} />
+        <div className={styles.buttonContainer}>
+          <SubmitButton text={btnText} />
+          <ButtonLink to="/" text="Voltar" />
+        </div>
 
         {newsError && (
           <div className={styles.showNewsErrorClass}>

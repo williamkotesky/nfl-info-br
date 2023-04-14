@@ -12,8 +12,17 @@ function NewsList() {
   // const [select, SetSelect] = useState({});
 
   useEffect(() => {
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem("localStorageNews")
+    );
+    if (localStorageRecover !== null) {
+      setNews(Content.news.concat(localStorageRecover.news));
+      setShowLoading(true);
+      return;
+    }
     setNews(Content.news);
     setShowLoading(true);
+
     // setTimeout(() => {
     //   fetch(`http://localhost:5000/news`, {
     //   method: "GET",

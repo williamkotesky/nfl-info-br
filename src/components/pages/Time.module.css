@@ -14,6 +14,22 @@
   margin: 1rem 0;
 }
 
+.showTeamNameError {
+  height: 4rem;
+  border: 1px solid red;
+  background-color: #ee6262;
+  margin: 1rem 0;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showTeamNameError p {
+  text-align: center;
+  margin: auto 0;
+}
+
 .actionBtn {
   width: 59px;
   height: 39px;

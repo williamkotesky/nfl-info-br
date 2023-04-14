@@ -28,6 +28,11 @@
   margin-bottom: 1rem;
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 @media (min-width: 768px) {
   .formContainer {
     width: 60%;

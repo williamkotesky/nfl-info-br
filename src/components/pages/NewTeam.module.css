@@ -1,11 +1,27 @@
 .newTeamContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .newTeamContainerTitle {
-    margin-bottom: 1rem;
-    margin-top: 1rem; 
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.showTeamNameError {
+  height: 4rem;
+  border: 1px solid red;
+  background-color: #ee6262;
+  margin: 1rem 0;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showTeamNameError p {
+  text-align: center;
+  margin: auto 0;
 }

@@ -108,31 +108,31 @@ function Calendario() {
     // eslint-disable-next-line
   }, [schedule]);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/news`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setMyTeams(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/news`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       setMyTeams(data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
-  useEffect(() => {
-    let myTeamsFilter = [];
-    myTeams &&
-      myTeams.map((item) => {
-        const lastNameArray = item.name.split(" ");
-        const lastName = lastNameArray[lastNameArray.length - 1];
-        myTeamsFilter.push(lastName);
-        return true;
-      });
-    setMyTeamsFav(myTeamsFilter);
-  }, [myTeams]);
+  // useEffect(() => {
+  //   let myTeamsFilter = [];
+  //   myTeams &&
+  //     myTeams.map((item) => {
+  //       const lastNameArray = item.name.split(" ");
+  //       const lastName = lastNameArray[lastNameArray.length - 1];
+  //       myTeamsFilter.push(lastName);
+  //       return true;
+  //     });
+  //   setMyTeamsFav(myTeamsFilter);
+  // }, [myTeams]);
 
   return (
     <>

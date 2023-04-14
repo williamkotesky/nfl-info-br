@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loading from "../layout/Loading";
 import TeamsForm from "../teams/TeamsForm";
@@ -10,6 +10,7 @@ import TeamInfo from "../layout/TeamInfo";
 import styles from "./Time.module.css";
 
 function Time() {
+  const history = useNavigate();
   const { id } = useParams();
   const [team, setTeam] = useState({});
   const [showTeamsForm, setShowTeamsForm] = useState(false);
@@ -17,6 +18,7 @@ function Time() {
   const [type, setType] = useState();
   const [teamId, setTeamId] = useState();
   const [showTeamErrorEdit, setShowTeamErrorEdit] = useState(false);
+  const [teamNameError, setTeamNameError] = useState(false);
   // eslint-disable-next-line
   const [teams, setTeams] = useState([
     null,
@@ -57,6 +59,20 @@ function Time() {
   ]);
 
   useEffect(() => {
+    let clickedTeam;
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem("localStorageTeams")
+    );
+    if (localStorageRecover !== null) {
+      const teamConcat = Content.teams.concat(localStorageRecover.teams);
+      clickedTeam = teamConcat.find((item) => item.id === Number(id));
+      setTeam(clickedTeam);
+      return;
+    }
+    clickedTeam = Content.teams.find((item) => item.id === Number(id));
+    setTeam(clickedTeam);
+  }, [id]);
+  useEffect(() => {
     // fetch(`http://localhost:5000/teams/${id}`, {
     //         method: "GET",
     //         headers: {
@@ -69,8 +85,8 @@ function Time() {
     //     setTeam(data)
     // })
     // .catch(err => console.log(err))
-    const clickedTeam = Content.teams.find((item) => item.id === Number(id));
-    setTeam(clickedTeam);
+    // const clickedTeam = Content.teams.find((item) => item.id === Number(id));
+    // setTeam(clickedTeam);
   }, [id]);
 
   useEffect(() => {
@@ -86,20 +102,37 @@ function Time() {
     }
   }
 
-  function editPost(team) {
-    if (
-      (team.conference.id === "1" && team.division.id[0] === "2") ||
-      (team.conference.id === "2" && team.division.id[0] === "1")
-    ) {
-      setMessage("A divisão escolhida não pertence a conferência escolhida");
-      setType("error");
-      return false;
+  function editPost(upDatedteam) {
+    const teamNameCheck = teams.find((item) => item === upDatedteam.name);
+    if (teamNameCheck === undefined) {
+      setTeamNameError(true);
+      return;
     }
 
-    if (team.id <= 5) {
+    if (upDatedteam.id <= 5 && id % 1 === 0) {
       setShowTeamErrorEdit(true);
       return;
     }
+
+    const localStorageRecover = JSON.parse(
+      localStorage.getItem(`localStorageTeams`)
+    );
+
+    const teamsArray = localStorageRecover.teams;
+    let upDatedData = teamsArray.map((item) => {
+      if (item.id === team.id) {
+        return upDatedteam;
+      }
+      return item;
+    });
+
+    localStorageRecover.teams = upDatedData;
+    localStorage.setItem(
+      "localStorageTeams",
+      JSON.stringify(localStorageRecover)
+    );
+    history("/times");
+
     // fetch(`http://localhost:5000/teams/${team.id}`, {
     //   method: "PATCH",
     //   headers: {
@@ -135,6 +168,11 @@ function Time() {
             </button>
             <ButtonLink to="/times" text="Voltar" />
           </div>
+          {teamNameError && (
+            <div className={styles.showTeamNameError}>
+              <p>O nome do time foi digitado incorretamente.</p>
+            </div>
+          )}
 
           {showTeamsForm ? (
             <>{teamId && <TeamInfo teamData={team} idData={teamId} />}</>

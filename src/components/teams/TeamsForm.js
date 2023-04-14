@@ -4,6 +4,7 @@ import Input from "../Form/Input";
 import SubmitButton from "../Form/SubmitButton";
 import Select from "../Form/Select";
 import Content from "../data/Content";
+import ButtonLink from "../layout/ButtonLink";
 
 import styles from "./TeamsForm.module.css";
 
@@ -121,7 +122,10 @@ function TeamForm({ handleSubmit, btnText, teamData, teamError }) {
           handleOnChange={handleSelect}
           value={team.division ? team.division.id : ""}
         />
-        <SubmitButton text={btnText} />
+        <div className={styles.buttonContainer}>
+          <SubmitButton text={btnText} />
+          <ButtonLink to="/times" text="Voltar" />
+        </div>
       </form>
     </div>
   );
