@@ -57,8 +57,7 @@ function News() {
       JSON.stringify(localStorageRecover)
     );
     back();
-    window.location.reload();
-    window.scrollTo(0, 0);
+    history("/");
     // fetch(`http://localhost:5000/news/${news.id}`, {
     //   method: "PATCH",
     //   headers: {
