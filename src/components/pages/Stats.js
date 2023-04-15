@@ -3,8 +3,7 @@ import Loading from "../layout/Loading";
 import styles from "./Stats.module.css";
 
 function Stats() {
-  // eslint-disable-next-line
-  const [teams, setTeams] = useState([
+  const teams = [
     null,
     "Atlanta Falcons",
     "Buffalo Bills",
@@ -40,7 +39,7 @@ function Stats() {
     null,
     "Baltimore Ravens",
     "Houston Texans",
-  ]);
+  ];
 
   const [stats, setStats] = useState([]);
 
@@ -65,7 +64,8 @@ function Stats() {
         setStats(data);
       });
     }, 1000);
-  }, [teams]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>

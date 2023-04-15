@@ -6,8 +6,7 @@ import styles from "./Calendario.module.css";
 function Calendario() {
   const [bye, setBye] = useState([]);
   const [schedule, setSchedule] = useState([]);
-  // eslint-disable-next-line
-  const [teams, setTeams] = useState([
+  const teams = [
     "Falcons",
     "Bills",
     "Bears",
@@ -40,10 +39,8 @@ function Calendario() {
     "Jaguars",
     "Ravens",
     "Texans",
-  ]);
-  //const [myTeams, setMyTeams] = useState([]);
-  // eslint-disable-next-line
-  const [myTeamsFav, setMyTeamsFav] = useState([]);
+  ];
+
   const [offSeason, setoffSeason] = useState();
 
   useEffect(() => {
@@ -109,32 +106,6 @@ function Calendario() {
     // eslint-disable-next-line
   }, [schedule]);
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/news`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       setMyTeams(data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // useEffect(() => {
-  //   let myTeamsFilter = [];
-  //   myTeams &&
-  //     myTeams.map((item) => {
-  //       const lastNameArray = item.name.split(" ");
-  //       const lastName = lastNameArray[lastNameArray.length - 1];
-  //       myTeamsFilter.push(lastName);
-  //       return true;
-  //     });
-  //   setMyTeamsFav(myTeamsFilter);
-  // }, [myTeams]);
-
   return (
     <>
       {offSeason ? (
@@ -158,19 +129,17 @@ function Calendario() {
             </div>
           )}
           <div className={styles.calendarioGrid}>
-            {myTeamsFav &&
-              schedule.map((item) => (
-                <ScheduleCard
-                  awayName={item.awayName}
-                  awayScore={item.awayScore}
-                  homeName={item.homeName}
-                  homeScore={item.homeScore}
-                  date={item.date}
-                  venue={item.venue}
-                  key={item.id}
-                  myTeams={myTeamsFav}
-                />
-              ))}
+            {schedule.map((item) => (
+              <ScheduleCard
+                awayName={item.awayName}
+                awayScore={item.awayScore}
+                homeName={item.homeName}
+                homeScore={item.homeScore}
+                date={item.date}
+                venue={item.venue}
+                key={item.id}
+              />
+            ))}
           </div>
         </section>
       ) : (

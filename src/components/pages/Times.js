@@ -1,22 +1,14 @@
 import { useState, useEffect } from "react";
-// import { useLocation } from "react-router-dom";
 import ButtonLink from "../layout/ButtonLink";
 import Card from "../layout/Card";
 import Loading from "../layout/Loading";
 import Content from "../data/Content";
-import Message from "../layout/Message";
 import styles from "./Times.module.css";
 
 function Times() {
   const [teams, setTeams] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
-  // eslint-disable-next-line
-  const [addTeamMessage, setAddTeamMessage] = useState("");
-  // eslint-disable-next-line
-  const [teamMessage, setTeamMessage] = useState("");
   const [showTeamErrorDelete, setShowTeamErrorDelete] = useState(false);
-
-  //   const location = useLocation();
 
   useEffect(() => {
     const localStorageRecover = JSON.parse(
@@ -30,25 +22,6 @@ function Times() {
 
     setTeams(Content.teams);
     setRemoveLoading(true);
-
-    // if (location.state) {
-    //   setAddTeamMessage(location.state.message);
-    // }
-
-    // setTimeout(() => {
-    //     fetch(`http://localhost:5000/teams`, {
-    //     method: "GET",
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // })
-    // .then(resp => resp.json())
-    // .then(data => {
-    //     setTeams(data);
-    //     setRemoveLoading(true);
-    //     })
-    // .catch(err => console.log(err))
-    // }, 1000);
   }, []);
 
   function removeTeam(id) {
@@ -67,18 +40,15 @@ function Times() {
       "localStorageTeams",
       JSON.stringify(localStorageRecover)
     );
+
+    if (newTeamsArray.length === 0) {
+      localStorage.removeItem("localStorageTeams");
+      window.location.reload();
+      window.scrollTo(0, 0);
+      return;
+    }
     window.location.reload();
     window.scrollTo(0, 0);
-
-    // fetch(`http://localhost:5000/teams/${id}`, {
-    //   method: "DELETE",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((resp) => resp.json())
-    //   .then(() => setTeams(teams.filter((team) => team.id !== id)))
-    //   .catch((err) => console.log(err));
   }
 
   return (
@@ -89,9 +59,6 @@ function Times() {
       <div className={styles.linkDiv}>
         <ButtonLink to="/newteam" text="Registrar novo time" />
       </div>
-      {addTeamMessage && <Message msg={addTeamMessage} type="success" />}
-
-      {teamMessage && <Message msg={teamMessage} type="success" />}
 
       {showTeamErrorDelete && (
         <div className={styles.showTeamErrorClass}>

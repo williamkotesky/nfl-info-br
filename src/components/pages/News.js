@@ -58,19 +58,6 @@ function News() {
     );
     back();
     history("/");
-    // fetch(`http://localhost:5000/news/${news.id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(news),
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     setNews(data);
-    //     setShowNewsForm(false);
-    //   })
-    //   .catch((err) => console.log(err));
   }
 
   function back() {
@@ -89,26 +76,19 @@ function News() {
     const newsArray = localStorageRecover.news;
 
     const newNewsArray = newsArray.filter((item) => item.id !== Number(id));
-    //map((item) => console.log(item.id, id));
-    console.log(newNewsArray);
+
     localStorageRecover.news = newNewsArray;
     localStorage.setItem(
       "localStorageNews",
       JSON.stringify(localStorageRecover)
     );
-    history("/");
 
-    //     fetch(`http://localhost:5000/news/${id}`, {
-    //       method: "DELETE",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     })
-    //       .then((resp) => resp.json())
-    //       .then(() => {
-    //         history("/");
-    //       })
-    //       .catch((err) => console.log(err));
+    if (newNewsArray.length === 0) {
+      localStorage.removeItem("localStorageNews");
+      history("/");
+      return;
+    }
+    history("/");
   }
 
   return (

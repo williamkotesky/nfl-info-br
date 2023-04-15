@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import ScrollToTop from "./components/layout/ScroolToTop";
+import Popup from "./components/layout/Popup";
 import Home from "./components/pages/Home";
 import Times from "./components/pages/Times";
 import Stats from "./components/pages/Stats";
@@ -18,6 +19,7 @@ function App() {
     <div className={styles.app}>
       <Navbar />
       <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="times" element={<Times />} />
@@ -32,6 +34,7 @@ function App() {
       </Routes>
 
       <Footer />
+      <Popup />
     </div>
   );
 }

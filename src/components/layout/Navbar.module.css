@@ -1,33 +1,30 @@
 .nav {
-    background-color: rgb(88, 143, 83);
-    height: 3.5rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: rgb(88, 143, 83);
+  height: 3.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav > a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .nflLogo {
-    font-size: 2rem;
-    margin-left: 3rem;
-    margin-bottom: 0;
-    color: #fff;
-    
+  font-size: 2rem;
+  margin-left: 3rem;
+  margin-bottom: 0;
+  color: #fff;
 }
 
-
-
 .checkBtn {
-    font-size: 30px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    margin-right: 3rem;
-    cursor: pointer;
+  font-size: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin-right: 3rem;
+  cursor: pointer;
 }
 
 /* .check {
@@ -35,112 +32,101 @@
 } */
 
 .navItems {
-    display: none;
+  display: none;
 }
 
 .navItems li a {
-    padding: 0.3rem 1rem;
-    color: #fff;
-    text-decoration: none;
-    
+  padding: 0.3rem 1rem;
+  color: #fff;
+  text-decoration: none;
 }
 
-.navItems li a:hover, .navMenuItems li a:hover {
-    background-color: rgb(141, 221, 161);
-    transition: .5s;
-    border-radius: 5px;
+.navItems li a:hover,
+.navMenuItems li a:hover {
+  background-color: rgb(141, 221, 161);
+  transition: 0.5s;
+  border-radius: 5px;
 }
 
 .active {
-    background-color: rgb(141, 221, 161);
-    border-radius: 5px;
+  background-color: rgb(141, 221, 161);
+  border-radius: 5px;
 }
 
 .inactive {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .navMenu {
-    width: 100%;
-    height: calc(100vh - 3.5rem)  ;
-    display: none;
-    justify-content: center;
-    position: absolute;
-    z-index: 0;  
-    
+  width: 100%;
+  height: calc(100vh - 3.5rem);
+  display: none;
+  justify-content: center;
+  position: absolute;
+  z-index: 0;
 }
 
 .navMenuItems {
-    margin: 0;
-    padding-top: 1rem;
-    padding: 0;
-    background-color: rgb(4, 54, 9);
-    width: 100%;
-    height: 100%;
-    margin-left: -200vw;
-    transition: all .5s;
-    
+  margin: 0;
+  padding-top: 1rem;
+  padding: 0;
+  background-color: rgb(4, 54, 9);
+  width: 100%;
+  height: 100%;
+  margin-left: -200vw;
+  transition: all 0.5s;
 }
 
-.navMenuItems li, .navRight li {
-    margin: 2rem 0;
-    display: flex;
-    justify-content: center;
-    
-    
+.navMenuItems li,
+.navRight li {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
 }
 
-.navMenuItems li a, .navRight li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    padding: .5rem;
-
-
-    
+.navMenuItems li a,
+.navRight li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 0.5rem;
 }
 
 .navRight {
-    margin: 0;
-    padding-top: 1rem;
-    padding: 0;
-    background-color: rgb(4, 54, 9);
-    width: 100%;
-    height: 100%;
-    margin-left: 0;
-    transition: all .5s;
+  margin: 0;
+  padding-top: 1rem;
+  padding: 0;
+  background-color: rgb(4, 54, 9);
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+  transition: all 0.5s;
 }
 
 .navDisplayFlex {
-    width: 100%;
-    height: calc(100vh - 3.5rem)  ;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    z-index: 3;  
+  width: 100%;
+  height: calc(100vh - 3.5rem);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
 }
 
+@media (min-width: 768px) {
+  .navItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 
+  .checkBtn {
+    display: none;
+  }
 
-
-
-@media (min-width:768px) {
-    .navItems {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 3rem;
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-
-
-    .checkBtn {
-        display: none;
-    }
-
-    .navMenu {
-        display: none;
-    }
-
+  .navMenu {
+    display: none;
+  }
 }

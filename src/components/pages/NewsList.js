@@ -3,13 +3,11 @@ import Loading from "../layout/Loading";
 import ButtonLink from "../layout/ButtonLink";
 import { Link } from "react-router-dom";
 import Content from "../data/Content";
-// import Select from '../Form/Select';
 import styles from "./NewsList.module.css";
 
 function NewsList() {
   const [news, setNews] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
-  // const [select, SetSelect] = useState({});
 
   useEffect(() => {
     const localStorageRecover = JSON.parse(
@@ -22,50 +20,11 @@ function NewsList() {
     }
     setNews(Content.news);
     setShowLoading(true);
-
-    // setTimeout(() => {
-    //   fetch(`http://localhost:5000/news`, {
-    //   method: "GET",
-    //   headers: {
-    //       'Content-Type': 'application/json'
-    //   }
-    //   })
-    //   .then(resp => resp.json())
-    //   .then(data => {
-    //       setNews(data);
-    //       setShowLoading(true);
-
-    //       })
-    //   .catch(err => console.log(err))
-    // }, 1000);
   }, []);
-
-  // const sortOptions = [{name:'Data', id:1}, {name:'Nome', id:2}]
-
-  // function handleSelect(e) {
-  //   news.map((item)=>{
-  //       if(e.target.options[e.target.selectedIndex] === 2) {
-  //           SetSelect(...news);
-  //           news.map((i)=>i.name.sort())
-  //           console.log(news)
-
-  //       }
-
-  //       return true;
-  //   })
-  // }
 
   return (
     <section className={styles.newsListContainer}>
       <h2>Lista de news do NFL INFO BR</h2>
-      {/* <div className={styles.sortNews}>
-              <Select name='sort' 
-                      title='Classificar' 
-                      text='Classificar por' 
-                      options={sortOptions}
-                      handleOnChange={handleSelect} 
-                      value={sortOptions.name ? sortOptions.id : ''}   />
-            </div> */}
       <ul>
         {news
           .slice(0)

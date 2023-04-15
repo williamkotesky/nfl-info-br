@@ -1,19 +1,18 @@
 .btnLink {
-    width: 59px;
-    height: 39px;
-    text-align: center;
-    font-size: 15px;
-    text-decoration: none;
-    color: #fff;
-    border: 1px solid rgb(88, 143, 83);
-    padding: .5em;
-    background-color: rgb(88, 143, 83);
- 
+  width: 59px;
+  height: 39px;
+  text-align: center;
+  font-size: 15px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgb(88, 143, 83);
+  padding: 0.5em;
+  background-color: rgb(88, 143, 83);
 }
 
 .btnLink:hover {
-    transition: .5s;
-    border: 1px solid rgb(141, 221, 161);
-    background-color: rgb(141, 221, 161);
-    color: #fff;
+  transition: 0.5s;
+  border: 1px solid rgb(141, 221, 161);
+  background-color: rgb(141, 221, 161);
+  color: #fff;
 }

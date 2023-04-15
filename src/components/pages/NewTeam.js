@@ -6,8 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 function NewTeam() {
   const history = useNavigate();
-  // eslint-disable-next-line
-  const [teams, setTeams] = useState([
+  const teams = [
     null,
     "Atlanta Falcons",
     "Buffalo Bills",
@@ -43,7 +42,8 @@ function NewTeam() {
     null,
     "Baltimore Ravens",
     "Houston Texans",
-  ]);
+  ];
+
   const [teamNameError, setTeamNameError] = useState(false);
 
   function createPost(team) {
@@ -65,16 +65,6 @@ function NewTeam() {
       localStorage.getItem("localStorageTeams")
     );
 
-    // function teamsId() {
-    //   if (
-    //     localStorageRecover &&
-    //     Object.keys(localStorageRecover).length === 0
-    //   ) {
-    //     return 6;
-    //   }
-    //   return 6 + Object.keys(localStorageRecover.teams).length; //ALTERAR?????????????
-    // }
-
     const teamsIdValue = uuidv4();
     const idNumber = parseInt(teamsIdValue.replace(/-/g, ""), 16);
     team = { ...team, id: idNumber };
@@ -85,18 +75,6 @@ function NewTeam() {
       JSON.stringify(localStorageRecover)
     );
     history("/times");
-    // fetch('http://localhost:5000/teams', {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(team)
-    // }).then((resp) => resp.json())
-    // .then((data) => {
-    //     history('/times', {state: { message: 'Time registrado com sucesso' }})
-
-    // })
-    // .catch((err) => console.log(err));
   }
 
   return (

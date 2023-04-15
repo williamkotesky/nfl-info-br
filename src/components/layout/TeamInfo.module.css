@@ -1,24 +1,39 @@
 .infoSection {
-    width: 100%;
-    margin: 1rem;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  height: 100vh;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
+.infoContainer {
+  width: 80%;
+  height: fit-content;
+}
 
 .infoContainer span {
-    display: inline-block;
-    margin-bottom: .5rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.divStats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divStats span {
+  display: inline-flex;
 }
 
 .infoField {
-    font-weight: bold;
-    margin-right: .2rem;
-    
+  font-weight: bold;
+  margin-right: 0.2rem;
 }
 
 .LoaderPlace {
-    margin-top: 5rem;
-    height: 100vh;
+  margin-top: 5rem;
+  height: 35vh;
 }

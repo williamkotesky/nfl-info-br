@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import Loading from "./Loading";
 import styles from "./TeamInfo.module.css";
 
-function TeamInfo({ teamData, idData }) {
+function TeamInfo({ idData }) {
   const [stats, setStats] = useState();
-  // eslint-disable-next-line
-  const [team, setTeam] = useState(teamData || {});
 
   useEffect(() => {
     setTimeout(() => {
@@ -18,7 +16,6 @@ function TeamInfo({ teamData, idData }) {
         .then((resp) => resp.json())
         .then((data) => {
           setStats(data);
-          console.log(data);
         })
         .catch((err) => console.log(err));
     }, 1000);
@@ -28,41 +25,71 @@ function TeamInfo({ teamData, idData }) {
     <section className={styles.infoSection}>
       {stats ? (
         <div className={styles.infoContainer}>
-          <span className={styles.infoField}>Campanha Geral: </span>
-          <span>{stats.summary}</span>
-          <br />
-          <span className={styles.infoField}>Percentual de vitórias: </span>
-          <span>{`${(stats.value * 100).toFixed(2)}%`}</span>
-          <br />
-          <span className={styles.infoField}>Desempenho na divisão: </span>
-          <span>{stats.stats[20].displayValue}</span>
-          <br />
-          <span className={styles.infoField}>Sequência de vitórias: </span>
-          <span> {stats.stats[15].value}</span>
-          <br />
-          <span className={styles.infoField}>
-            Percentual de vitórias na divisão:
-          </span>
-          <span>{`${(stats.stats[6].value * 100).toFixed(2)}%`}</span>
-          <br />
-          <span className={styles.infoField}>Total de pontos marcados: </span>
-          <span>{stats.stats[14].displayValue}</span>
-          <br />
-          <span className={styles.infoField}>Total de pontos sofridos: </span>
-          <span>{stats.stats[13].displayValue}</span>
-          <br />
-          <span className={styles.infoField}>Saldo de pontuação: </span>
-          <span>{stats.stats[5].displayValue}</span>
-          <br />
-          <span className={styles.infoField}>Pontos por jogo: </span>
-          <span>{stats.stats[3].displayValue}</span>
-          <br />
-          <span className={styles.infoField}>Pontos sofridos por jogo: </span>
-          <span>{stats.stats[2].displayValue}</span>
-          <br />
-          <span className={styles.infoField}>Playoff Seed: </span>
-          <span>{`#${stats.stats[11].displayValue}`}</span>
-          <br />
+          <div className={styles.divStats}>
+            <div>
+              <span className={styles.infoField}>Campanha Geral: </span>
+              <span>{stats.summary}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>% de vitórias: </span>
+              <span>{`${(stats.value * 100).toFixed(2)}%`}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>Desempenho na divisão: </span>
+              <span>{stats.stats[20].displayValue}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>Sequência de vitórias: </span>
+              <span> {stats.stats[15].value}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>
+                % de vitórias na divisão:
+              </span>
+              <span>{`${(stats.stats[6].value * 100).toFixed(2)}%`}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>
+                Total de pontos marcados:{" "}
+              </span>
+              <span>{stats.stats[14].displayValue}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>
+                Total de pontos sofridos:{" "}
+              </span>
+              <span>{stats.stats[13].displayValue}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>Saldo de pontuação: </span>
+              <span>{stats.stats[5].displayValue}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>Pontos por jogo: </span>
+              <span>{stats.stats[3].displayValue}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>
+                Pontos sofridos por jogo:{" "}
+              </span>
+              <span>{stats.stats[2].displayValue}</span>
+            </div>
+            <br />
+            <div>
+              <span className={styles.infoField}>Playoff Seed: </span>
+              <span>{`#${stats.stats[11].displayValue}`}</span>
+            </div>
+            <br />
+          </div>
         </div>
       ) : (
         <div className={styles.LoaderPlace}>

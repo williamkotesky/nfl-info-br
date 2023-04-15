@@ -3,10 +3,8 @@ import { useState, useEffect } from "react";
 import Loading from "../layout/Loading";
 import TeamsForm from "../teams/TeamsForm";
 import Content from "../data/Content";
-import Message from "../layout/Message";
 import ButtonLink from "../layout/ButtonLink";
 import TeamInfo from "../layout/TeamInfo";
-
 import styles from "./Time.module.css";
 
 function Time() {
@@ -14,15 +12,10 @@ function Time() {
   const { id } = useParams();
   const [team, setTeam] = useState({});
   const [showTeamsForm, setShowTeamsForm] = useState(false);
-  // eslint-disable-next-line
-  const [message, setMessage] = useState();
-  // eslint-disable-next-line
-  const [type, setType] = useState();
   const [teamId, setTeamId] = useState();
   const [showTeamErrorEdit, setShowTeamErrorEdit] = useState(false);
   const [teamNameError, setTeamNameError] = useState(false);
-  // eslint-disable-next-line
-  const [teams, setTeams] = useState([
+  const teams = [
     null,
     "Atlanta Falcons",
     "Buffalo Bills",
@@ -58,7 +51,7 @@ function Time() {
     null,
     "Baltimore Ravens",
     "Houston Texans",
-  ]);
+  ];
 
   useEffect(() => {
     let clickedTeam;
@@ -74,27 +67,11 @@ function Time() {
     clickedTeam = Content.teams.find((item) => item.id === Number(id));
     setTeam(clickedTeam);
   }, [id]);
-  useEffect(() => {
-    // fetch(`http://localhost:5000/teams/${id}`, {
-    //         method: "GET",
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }
-    // )
-    // .then((resp) => resp.json())
-    // .then(data => {
-    //     setTeam(data)
-    // })
-    // .catch(err => console.log(err))
-    // const clickedTeam = Content.teams.find((item) => item.id === Number(id));
-    // setTeam(clickedTeam);
-  }, [id]);
 
   useEffect(() => {
     IdSearch();
     // eslint-disable-next-line
-  }, [team]);
+  }, []);
 
   function IdSearch() {
     for (let i = 0; i < teams.length; i++) {
@@ -134,22 +111,6 @@ function Time() {
       JSON.stringify(localStorageRecover)
     );
     history("/times");
-
-    // fetch(`http://localhost:5000/teams/${team.id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(team),
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     setTeam(data);
-    //     setShowTeamsForm(false);
-    //     setMessage("Time atualizado!");
-    //     setType("success");
-    //   })
-    //   .catch((err) => console.log(err));
   }
 
   function toggleTeamsForm() {
@@ -160,10 +121,7 @@ function Time() {
     <>
       {team.name ? (
         <section className={styles.timeContainer}>
-          {message && <Message type={type} msg={message} />}
-
           <h1>{team.name}</h1>
-
           <div className={styles.timeBtns}>
             <button className={styles.actionBtn} onClick={toggleTeamsForm}>
               {!showTeamsForm ? "Info" : "Editar"}
@@ -177,7 +135,7 @@ function Time() {
           )}
 
           {showTeamsForm ? (
-            <>{teamId && <TeamInfo teamData={team} idData={teamId} />}</>
+            <>{teamId && <TeamInfo idData={teamId} />}</>
           ) : (
             <TeamsForm
               handleSubmit={editPost}

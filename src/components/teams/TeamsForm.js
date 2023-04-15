@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-
 import Input from "../Form/Input";
 import SubmitButton from "../Form/SubmitButton";
 import Select from "../Form/Select";
 import Content from "../data/Content";
 import ButtonLink from "../layout/ButtonLink";
-
 import styles from "./TeamsForm.module.css";
 
 function TeamForm({ handleSubmit, btnText, teamData, teamError }) {
@@ -15,32 +13,10 @@ function TeamForm({ handleSubmit, btnText, teamData, teamError }) {
 
   useEffect(() => {
     setConference(Content.conference);
-    // fetch(`http://localhost:5000/conference`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     setConference(data);
-    //   })
-    //   .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
     setDivision(Content.division);
-    // fetch(`http://localhost:5000/division`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     setDivision(data);
-    //   })
-    //   .catch((err) => console.log(err));
   }, []);
 
   const submit = (e) => {

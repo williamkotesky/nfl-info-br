@@ -16,9 +16,7 @@ function Footer() {
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.infoFooter}>
-        <p>
-          Site feito com React.js. O site utiliza cookies para executar o CRUD.
-        </p>
+        <p>Site feito com React.js, com objetivos acadêmicos.</p>
         <p>Marcas e nomes dos times são propriedades da NFL.</p>
         <p className={styles.year}>{dataYear}</p>
       </div>

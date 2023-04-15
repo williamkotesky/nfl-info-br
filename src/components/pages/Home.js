@@ -9,10 +9,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
-  //flash msgs
-
-  //stars no calendario
-
   const [news, setNews] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
 
@@ -52,9 +48,11 @@ function Home() {
                     alt={item.alt}
                     key={item.id}
                   />
-                  <p>Para acessar a lista de news do site, </p>{" "}
+                  <p>Para acessar a lista de news do site, </p>
                   <span className={styles.linkList}>
-                    <Link to="/newslist">clique aqui.</Link>
+                    <Link to="/newslist" className={styles.linkListRouter}>
+                      clique aqui.
+                    </Link>
                   </span>
                 </div>
               )
@@ -98,12 +96,3 @@ function Home() {
 }
 
 export default Home;
-
-// src="https://img2.thejournal.ie/article/3179351/river?version=3179540&width=1340"
-
-// src="https://media.gq-magazine.co.uk/photos/5d13ad354113b55f8e46adb7/16:9/w_1280,c_limit/New-England-Patriots-06-GQ-18Oct17_getty_b.jpg"
-
-// src="https://www.al.com/resizer/CT0GBMGt71D4wxpodbx-WB_GmQQ=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/ZCOR2EFZ7VHQZNPMGZBGKEWLCM.jpg"
-
-// Math.max(...news.map(item => item.id))
-// news.slice(0).reverse().map((item, index)=> ())
