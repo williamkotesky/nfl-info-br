@@ -71,7 +71,7 @@ function Time() {
   useEffect(() => {
     IdSearch();
     // eslint-disable-next-line
-  }, []);
+  }, [teams]);
 
   function IdSearch() {
     for (let i = 0; i < teams.length; i++) {
