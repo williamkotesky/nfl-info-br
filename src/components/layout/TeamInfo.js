@@ -38,12 +38,12 @@ function TeamInfo({ idData }) {
             <br />
             <div>
               <span className={styles.infoField}>Desempenho na divisão: </span>
-              <span>{stats.stats[20].displayValue}</span>
+              <span>{stats.stats[21].displayValue}</span>
             </div>
             <br />
             <div>
               <span className={styles.infoField}>Sequência de vitórias: </span>
-              <span> {stats.stats[15].value}</span>
+              <span> {stats.stats[16].value}</span>
             </div>
             <br />
             <div>
@@ -57,14 +57,14 @@ function TeamInfo({ idData }) {
               <span className={styles.infoField}>
                 Total de pontos marcados:{" "}
               </span>
-              <span>{stats.stats[14].displayValue}</span>
+              <span>{stats.stats[15].displayValue}</span>
             </div>
             <br />
             <div>
               <span className={styles.infoField}>
                 Total de pontos sofridos:{" "}
               </span>
-              <span>{stats.stats[13].displayValue}</span>
+              <span>{stats.stats[14].displayValue}</span>
             </div>
             <br />
             <div>

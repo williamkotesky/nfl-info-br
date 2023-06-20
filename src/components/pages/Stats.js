@@ -57,6 +57,7 @@ function Stats() {
               ).json())
           )
         );
+        console.log(data);
         return data;
       }
 
@@ -87,9 +88,9 @@ function Stats() {
                   item && (
                     <tr key={teams[index]}>
                       <td>{teams[index]}</td>
-                      <td>{item.stats[18].value}</td>
+                      <td>{item.stats[19].value}</td>
                       <td>{item.stats[10].value}</td>
-                      <td>{item.stats[16].value}</td>
+                      <td>{item.stats[17].value}</td>
                     </tr>
                   )
               )}
